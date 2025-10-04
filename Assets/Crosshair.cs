@@ -16,34 +16,12 @@ public class Crosshair : MonoBehaviour
 
     void Update()
     {
-        float moveX = 0f;
-        float moveY = 0f;
+            float Vertical = Input.GetAxis("Vertical");
+            float Horizontal = Input.GetAxis("Horizontal");
 
-            if (Input.GetKey(KeyCode.W))
-                moveY = 1f;
-            else if (Input.GetKey(KeyCode.S))
-                moveY = -1f;
-        
+            rb.linearVelocity = new Vector2(Horizontal * speed, Vertical * speed);
 
-            if (Input.GetKey(KeyCode.UpArrow))
-                moveY = 1f;
-            else if (Input.GetKey(KeyCode.DownArrow))
-                moveY = -1f;
-        
- 
-            if (Input.GetKey(KeyCode.A))
-                moveX = -1f;
-            else if (Input.GetKey(KeyCode.LeftArrow))
-                moveX = -1f;
-                
-                if (Input.GetKey(KeyCode.D))
-                moveX = 1f;
-            else if (Input.GetKey(KeyCode.RightArrow))
-                moveX = 1f;
-
-            rb.linearVelocity = new Vector2(moveX * speed,moveY * speed);
-
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetButtonDown("Fire1")||Input.GetKeyDown(KeyCode.Space))
         {
             GameObject obj;
             obj = Instantiate(Bullet);

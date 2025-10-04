@@ -17,9 +17,10 @@ public float speed= 0.05f;
  private void OnTriggerEnter2D(Collider2D other)    
  { 
         if(other.CompareTag("Drone"))
-        {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+        {   
+        other.GetComponent<Drones>().Die();
+        Destroy(gameObject);
+            
         }
 
    }
